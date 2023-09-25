@@ -4,4 +4,7 @@ ________________________________________
 
 To do:
 
-- commento il markup statico per ricrearlo dinamicamente in Javascript utilizzando un ciclo forEach e templete literal.
+
+1. commento il markup statico per ricrearlo dinamicamente in Javascript utilizzando un ciclo forEach e templete literal;
+
+2. prendo l'elemento in cui stampare i post (oggetti dell'array fornito)

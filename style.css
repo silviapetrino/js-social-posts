@@ -123,3 +123,7 @@ h1 {
     color: #0CD977;
     cursor: default;
 }
+
+.debug {
+ border: 2px solid rgb(0, 0, 0);
+}
