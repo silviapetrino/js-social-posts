@@ -4,7 +4,8 @@
 // // 2. prendo l'elemento in cui stampare i post (oggetti dell'array fornito);
 // // 3. prendo il bottone;
 // // 4. creo una funzione che cambia il colore e una che incrementa
-// 5. creo una condizione se l'immagine non è presente 
+// 5. creo una condizione se l'immagine non è presente;
+// 6. inverto ordine data 
 
 const posts = [
     {
@@ -70,6 +71,13 @@ const postsList = document.querySelector(".posts-list");
 
 posts.forEach(post => {
 
+    let date = post.created; 
+        
+    const dateParts = date.split("-");
+
+    date = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
+    console.log(date)
+
     if (!post.author.image) {
         const authorInitials = justFirstLetters(post.author.name);
         postsList.innerHTML += `
@@ -81,7 +89,7 @@ posts.forEach(post => {
                         </div>
                         <div class="post-meta__data">
                             <div class="post-meta__author">${post.author.name}</div>
-                            <div class="post-meta__time">${post.created}</div>
+                            <div class="post-meta__time">${date}</div>
                         </div>                    
                     </div>
                 </div>
@@ -115,7 +123,7 @@ posts.forEach(post => {
                         </div>
                         <div class="post-meta__data">
                             <div class="post-meta__author">${post.author.name}</div>
-                            <div class="post-meta__time">${post.created}</div>
+                            <div class="post-meta__time">${date}</div>
                         </div>                    
                     </div>
                 </div>
@@ -158,8 +166,11 @@ posts.forEach(post => {
         });
 
 
-});
 
+     
+        
+  
+});
 
 
 
@@ -171,5 +182,4 @@ function justFirstLetters(string) {
     const firstLetters = words.map(parola => parola.charAt(0));
     return firstLetters;
 }
-
 
