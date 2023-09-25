@@ -1,9 +1,10 @@
-// / To do:
+// // / To do:
 
-//1. - commento il markup statico per ricrearlo dinamicamente in Javascript utilizzando un ciclo forEach e templete literal;
-// 2. prendo l'elemento in cui stampare i post (oggetti dell'array fornito);
-// 3. prendo il bottone;
-// 4. creo una funzione che cambia il colore e una che incrementa
+// //1. - commento il markup statico per ricrearlo dinamicamente in Javascript utilizzando un ciclo forEach e templete literal;
+// // 2. prendo l'elemento in cui stampare i post (oggetti dell'array fornito);
+// // 3. prendo il bottone;
+// // 4. creo una funzione che cambia il colore e una che incrementa
+// 5. creo una condizione se l'immagine non è presente 
 
 const posts = [
     {
@@ -136,12 +137,11 @@ posts.forEach(post => {
                     </div> 
                 </div>            
             </div>
-            `
-          
+            ` 
     }
 
 
-   
+//    buttons
     
         const btns = document.querySelectorAll(".like-button");
         const likesCount = document.querySelectorAll(".js-likes-counter");
@@ -153,7 +153,7 @@ posts.forEach(post => {
             btn.addEventListener("click", function () {
                 btn.classList.add("red-color");
                 currentLikes++; 
-                likesCount[index].innerHTML = currentLikes; 
+                likesCount[index].innerHTML = currentLikes;
             });
         });
 
@@ -163,7 +163,7 @@ posts.forEach(post => {
 
 
 
-// estrarre iniziali parole 
+// estrarre iniziali delle parole 
 
 function justFirstLetters(string) {
 
