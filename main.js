@@ -88,10 +88,10 @@ posts.forEach(post => {
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="${post.id}">
+                        <button class="like-button  js-like-button" href="#" data-postid="${post.id}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
-                        </a>
+                        </button>
                     </div>
                     <div class="likes__counter">
                         Piace a <b id="like-counter-1" class="js-likes-counter">${post.likes}</b> persone
@@ -101,27 +101,28 @@ posts.forEach(post => {
         </div>
         `
 
-            const btn = document.querySelector(".like-button");
-            console.log(btn);
-            let postLikes = posts.likes;
-
-            btn.addEventListener("click", function(){
-            changeColor(btn);
-      
-})
 
 });
+
+
+const btns = document.querySelectorAll(".like-button");
+console.log(btns);
+
+btns.forEach(btn => {
+    
+    btn.addEventListener("click", function(){
+        btn.classList.toggle("red-color");
+    })
+
+})
+
+
+
 
 
 // **Milestone 3** - Se clicchiamo sul tasto “Mi Piace” cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
 // // Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
 
-
-
-
-function changeColor(element) {
-    element.classList.toggle("red-color");
-}
 
 
 // estrarre iniziali parole 
