@@ -1,11 +1,9 @@
-// // / To do:
-
-// //1. - commento il markup statico per ricrearlo dinamicamente in Javascript utilizzando un ciclo forEach e templete literal;
-// // 2. prendo l'elemento in cui stampare i post (oggetti dell'array fornito);
-// // 3. prendo il bottone;
-// // 4. creo una funzione che cambia il colore e una che incrementa
-// 5. creo una condizione se l'immagine non è presente;
-// 6. inverto ordine data 
+// Comment out the static markup to recreate it dynamically in JavaScript using a forEach loop and template literals.
+// Get the element where to display the posts (objects from the provided array).
+// Get the button.
+// Create a function to change the color and one to increment.
+// Create a condition if the image is not present.
+// Reverse the date order. 
 
 const posts = [
     {
@@ -71,15 +69,20 @@ const postsList = document.querySelector(".posts-list");
 
 posts.forEach(post => {
 
+    // Reverse the date order.
     let date = post.created; 
         
     const dateParts = date.split("-");
 
     date = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
-    console.log(date)
+ 
+    // if image is null  
+
 
     if (!post.author.image) {
+
         const authorInitials = justFirstLetters(post.author.name);
+
         postsList.innerHTML += `
         <div class="post" id="${post.id}">
                 <div class="post__header">
@@ -113,6 +116,8 @@ posts.forEach(post => {
             </div>
             `
         
+        // with image  
+
     } else {
         postsList.innerHTML += `
         <div class="post" id="${post.id}">
@@ -166,15 +171,11 @@ posts.forEach(post => {
         });
 
 
-
-     
-        
-  
 });
 
 
 
-// estrarre iniziali delle parole 
+// To extract the initials of words
 
 function justFirstLetters(string) {
 
