@@ -66,62 +66,100 @@ const posts = [
 const postsList = document.querySelector(".posts-list");
 
 
+
 posts.forEach(post => {
 
-    postsList.innerHTML += `
-    <div class="post" id="${post.id}">
-            <div class="post__header">
-                <div class="post-meta">                    
-                    <div class="post-meta__icon">
-                        <img class="profile-pic" src="${post.author.image}" alt="${post.author.name}">                    
+    if (!post.author.image) {
+        const authorInitials = justFirstLetters(post.author.name);
+        postsList.innerHTML += `
+        <div class="post" id="${post.id}">
+                <div class="post__header">
+                    <div class="post-meta">                    
+                        <div class="post-meta__icon">
+                            ${authorInitials}                   
+                        </div>
+                        <div class="post-meta__data">
+                            <div class="post-meta__author">${post.author.name}</div>
+                            <div class="post-meta__time">${post.created}</div>
+                        </div>                    
                     </div>
-                    <div class="post-meta__data">
-                        <div class="post-meta__author">${post.author.name}</div>
-                        <div class="post-meta__time">${post.created}</div>
-                    </div>                    
                 </div>
+                <div class="post__text">${post.content}</div>
+                <div class="post__image">
+                    <img src="${post.media}" alt="${post.media}">
+                </div>
+                <div class="post__footer">
+                    <div class="likes js-likes">
+                        <div class="likes__cta">
+                            <button class="like-button  js-like-button" href="#" data-postid="${post.id}">
+                                <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                                <span class="like-button__label">Mi Piace</span>
+                            </button>
+                        </div>
+                        <div class="likes__counter">
+                            Piace a <b id="like-counter-${post.id}" class="js-likes-counter">${post.likes}</b> persone
+                        </div>
+                    </div> 
+                </div>            
             </div>
-            <div class="post__text">${post.content}</div>
-            <div class="post__image">
-                <img src="${post.media}" alt="${post.media}">
+            `
+        
+    } else {
+        postsList.innerHTML += `
+        <div class="post" id="${post.id}">
+                <div class="post__header">
+                    <div class="post-meta">                    
+                        <div class="post-meta__icon">
+                            <img class="profile-pic" src="${post.author.image}" alt="${post.author.name}">                    
+                        </div>
+                        <div class="post-meta__data">
+                            <div class="post-meta__author">${post.author.name}</div>
+                            <div class="post-meta__time">${post.created}</div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="post__text">${post.content}</div>
+                <div class="post__image">
+                    <img src="${post.media}" alt="${post.media}">
+                </div>
+                <div class="post__footer">
+                    <div class="likes js-likes">
+                        <div class="likes__cta">
+                            <button class="like-button  js-like-button" href="#" data-postid="${post.id}">
+                                <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                                <span class="like-button__label">Mi Piace</span>
+                            </button>
+                        </div>
+                        <div class="likes__counter">
+                            Piace a <b id="like-counter-${post.id}" class="js-likes-counter">${post.likes}</b> persone
+                        </div>
+                    </div> 
+                </div>            
             </div>
-            <div class="post__footer">
-                <div class="likes js-likes">
-                    <div class="likes__cta">
-                        <button class="like-button  js-like-button" href="#" data-postid="${post.id}">
-                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-                            <span class="like-button__label">Mi Piace</span>
-                        </button>
-                    </div>
-                    <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${post.likes}</b> persone
-                    </div>
-                </div> 
-            </div>            
-        </div>
-        `
+            `
+          
+    }
+
+
+   
+    
+        const btns = document.querySelectorAll(".like-button");
+        const likesCount = document.querySelectorAll(".js-likes-counter");
+        
+        btns.forEach((btn, index) => {
+            let currentLikes = parseInt(likesCount[index].innerHTML);
+    
+        
+            btn.addEventListener("click", function () {
+                btn.classList.add("red-color");
+                currentLikes++; 
+                likesCount[index].innerHTML = currentLikes; 
+            });
+        });
 
 
 });
 
-
-const btns = document.querySelectorAll(".like-button");
-console.log(btns);
-
-btns.forEach(btn => {
-    
-    btn.addEventListener("click", function(){
-        btn.classList.toggle("red-color");
-    })
-
-})
-
-
-
-
-
-// **Milestone 3** - Se clicchiamo sul tasto “Mi Piace” cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
-// // Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
 
 
 
@@ -135,9 +173,3 @@ function justFirstLetters(string) {
 }
 
 
-
-function incrementLikes(currentLikes, postId) {
-    const likeCounter = document.getElementById(`like-counter-${postId}`);
-    currentLikes++;
-    likeCounter.textContent = currentLikes;
-}
