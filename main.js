@@ -88,7 +88,7 @@ posts.forEach(post => {
                 <div class="post__header">
                     <div class="post-meta">                    
                         <div class="post-meta__icon">
-                            ${authorInitials}                   
+                           <span class="profile-pic-default">${authorInitials}</span>
                         </div>
                         <div class="post-meta__data">
                             <div class="post-meta__author">${post.author.name}</div>
@@ -181,6 +181,6 @@ function justFirstLetters(string) {
 
     const words = string.split(' ');
     const firstLetters = words.map(parola => parola.charAt(0));
-    return firstLetters;
+    return firstLetters.join(' ');
 }
 
