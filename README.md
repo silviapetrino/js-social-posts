@@ -2,13 +2,14 @@ The project involved creating a social feed by adding our JavaScript script to t
 
 Done:
 
-    Commented out the static markup to recreate it dynamically in JavaScript using a forEach loop and template literals;
+    - Commented out the static markup to recreate it dynamically in JavaScript using a forEach loop and template literals;
 
-    Got the element where to display the posts (objects from the provided array);
-    Got the button;
+    - got the element where to display the posts (objects from the provided array);
 
-    Created a function to change the color and one to increment;
+    - got the button;
 
-    Created a condition if the image was not present;
-    
-    Reversed the date order.;
+    - Created a function to change the color and one to increment;
+
+    - Created a condition if the image was not present;
+
+    - Reversed the date order.
